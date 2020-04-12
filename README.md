@@ -11,7 +11,7 @@ This application supports the [Getting Started with Java on Heroku](https://devc
 Make sure you have Java and Maven installed.  Also, install the [Heroku CLI](https://cli.heroku.com/).
 
 ```sh
-$ git clone https://github.com/heroku/tenji-team.git
+$ git clone https://github.com/ggd3731085/tenji-team.git
 $ cd tenji-team
 $ mvn install
 $ heroku local:start
