@@ -1,0 +1,1 @@
+web: java -jar target/tenji-team-1.0.jar
