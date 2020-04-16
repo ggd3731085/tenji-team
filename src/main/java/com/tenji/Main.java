@@ -16,12 +16,12 @@
 
 package com.tenji;
 
-import static javax.measure.unit.SI.KILOGRAM;
-import javax.measure.quantity.Mass;
-import org.jscience.physics.model.RelativisticModel;
-import org.jscience.physics.amount.Amount;
+import com.tenji.entity.Employee;
+import com.tenji.service.EmployeeService;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.jscience.physics.amount.Amount;
+import org.jscience.physics.model.RelativisticModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +29,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.measure.quantity.Mass;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,6 +39,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+
+import static javax.measure.unit.SI.KILOGRAM;
 
 @Controller
 @SpringBootApplication
@@ -87,6 +91,68 @@ public class Main {
       return "error";
     }
   }
+    private EmployeeService employeeService;
+
+    @RequestMapping(value = "/addEmployee")
+    public boolean addEmployee( @RequestParam("usercd") String usercd,
+                                @RequestParam("username") String username,
+                                @RequestParam("sex") String sex) {
+        System.out.println("开始新增...");
+        Employee employee = new Employee();
+        employee.setusername(username);
+        employee.setusercd(usercd);
+        employee.setsex(sex);
+        return employeeService.addEmployee(employee);
+    }
+
+    @RequestMapping(value = "/updateEmployee")
+    public boolean updateEmployee( Employee employee) {
+        System.out.println("开始更新...");
+        return employeeService.updateEmployee(employee);
+    }
+
+    @RequestMapping(value = "/deleteEmployee")
+    public boolean deleteEmployee(@RequestParam(value = "userName", required = true) String userCD) {
+        System.out.println("开始删除...");
+        return employeeService.deleteEmployee(userCD);
+    }
+
+    @RequestMapping("/findByUserName")
+    String  findByUserName(Map<String, Object> model) {
+        System.out.println("Start123...");
+        try{
+            System.out.println("employeeService_Start...");
+            //Employee emp =  employeeService.findEmployeeByName("天時くん００１");
+            Employee emp = new Employee();
+            try (Connection connection = dataSource.getConnection()) {
+                Statement stmt = connection.createStatement();
+                ResultSet rs =
+                        stmt.executeQuery(
+                                "SELECT UserCD,UserName,Sex FROM m_Employee where UserName='天時くん００１'"
+                        );
+
+                while (rs.next()) {
+                    emp.setusercd(rs.getString("usercd"));
+                    emp.setusername(rs.getString("username"));
+                }
+            }catch (Exception ex){
+
+            }
+            System.out.println("employeeService_End...");
+            ArrayList<String> output = new ArrayList<String>();
+            output.add("usercd: " + emp.getusercd());
+            output.add("username: " + emp.getusername());
+            model.put("records", output);
+
+        }catch(Exception e){
+            System.out.println("error...");
+            System.out.println(e.getMessage());
+            model.put("message", e.getMessage());
+            return "error";
+        }
+
+        return "findByUserName";
+    }
 
   @Bean
   public DataSource dataSource() throws SQLException {
