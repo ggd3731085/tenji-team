@@ -30,6 +30,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.measure.quantity.Mass;
 import javax.sql.DataSource;
@@ -41,6 +42,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static javax.measure.unit.SI.KILOGRAM;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @SpringBootApplication
@@ -152,6 +156,38 @@ public class Main {
         }
 
         return "findByUserName";
+    }
+    @RequestMapping("/input")
+    public String input(Map<String, Object> model) {
+         return "input";
+    }
+    @RequestMapping(path = "/inputs")
+    public String  submit(@ModelAttribute Employee emp) {
+        try{
+            System.out.println("employeeService_Start...");
+            System.out.println("employeeService_usercd..."+ emp.getusercd());
+            //Employee emp =  employeeService.findEmployeeByName("天時くん００１");
+            try (Connection connection = dataSource.getConnection()) {
+                Statement stmt = connection.createStatement();
+                ResultSet rs =
+                        stmt.executeQuery(
+                                "SELECT UserCD,UserName,Sex FROM m_Employee where UserName='天時くん００１'"
+                        );
+
+                while (rs.next()) {
+                    emp.setusercd(rs.getString("usercd"));
+                    emp.setusername(rs.getString("username"));
+                }
+            }catch (Exception ex){
+
+            }
+            System.out.println("employeeService_End...");
+
+        }catch(Exception e){
+            System.out.println("error...");
+            System.out.println(e.getMessage());
+        }
+        return "input";
     }
 
   @Bean
