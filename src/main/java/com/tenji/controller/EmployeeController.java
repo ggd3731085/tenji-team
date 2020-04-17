@@ -13,7 +13,7 @@ public class EmployeeController {
 
     private EmployeeService employeeService;
 
-    @PostMapping(value = "/addEmployee")
+    @PostMapping(value = "/addEmployeeC")
     public boolean addEmployee( @RequestParam("usercd") String usercd,
                                 @RequestParam("username") String username,
                                 @RequestParam("sex") String sex) {
@@ -25,13 +25,13 @@ public class EmployeeController {
         return employeeService.addEmployee(employee);
     }
 
-    @GetMapping(value = "/updateEmployee")
+    @GetMapping(value = "/updateEmployeeC")
     public boolean updateEmployee( Employee employee) {
         System.out.println("开始更新...");
         return employeeService.updateEmployee(employee);
     }
 
-    @GetMapping(value = "/deleteEmployee")
+    @GetMapping(value = "/deleteEmployeeC")
     public boolean deleteEmployee(@RequestParam(value = "userName", required = true) String userCD) {
         System.out.println("开始删除...");
         return employeeService.deleteEmployee(userCD);
