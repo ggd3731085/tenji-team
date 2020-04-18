@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Input Thymeleaf</title>
 </head>
 <body>
 <h1>Input Thymeleaf</h1>
-<form action="#" th:action="@{/inputs}" method="post">
+<form action="#" th:action="@{/input}" method="post">
 	<p><input name="usercd" type="text" /></p>
 	<p><input type="submit" value="submit"/></p>
 </form>
-
+<h1>display</h1>
+<ul th:each="record : ${records}">
+    <li th:text="${record}"/>
+</ul>
 </body>
 </html>

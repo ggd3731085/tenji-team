@@ -157,26 +157,29 @@ public class Main {
 
         return "findByUserName";
     }
-    @RequestMapping("/input")
-    public String input(Map<String, Object> model) {
+    @RequestMapping("/input2")
+     String input2(Map<String, Object> model) {
          return "input";
     }
-    @RequestMapping(path = "/inputs")
-    public String  submit(@ModelAttribute Employee emp) {
+    @RequestMapping(path = "/input")
+     String  input(@ModelAttribute Employee employee,Map<String, Object> model) {
         try{
             System.out.println("employeeService_Start...");
-            System.out.println("employeeService_usercd..."+ emp.getusercd());
+            System.out.println("employeeService_usercd..."+ employee.getusercd());
             //Employee emp =  employeeService.findEmployeeByName("天時くん００１");
             try (Connection connection = dataSource.getConnection()) {
                 Statement stmt = connection.createStatement();
                 ResultSet rs =
                         stmt.executeQuery(
-                                "SELECT UserCD,UserName,Sex FROM m_Employee where UserName='天時くん００１'"
+                                "SELECT UserCD,UserName,Sex FROM m_Employee where Usercd='" + employee.getusercd() + "'"
                         );
 
                 while (rs.next()) {
-                    emp.setusercd(rs.getString("usercd"));
-                    emp.setusername(rs.getString("username"));
+                    System.out.println("employeeService_End...");
+                    ArrayList<String> output = new ArrayList<String>();
+                    output.add("usercd: " + rs.getString("usercd"));
+                    output.add("username: " + rs.getString("username"));
+                    model.put("records", output);
                 }
             }catch (Exception ex){
 
