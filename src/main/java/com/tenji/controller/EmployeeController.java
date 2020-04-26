@@ -2,15 +2,16 @@ package com.tenji.controller;
 import com.tenji.entity.Employee;
 import com.tenji.service.EmployeeService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
 public class EmployeeController {
 
+    @Autowired
     private EmployeeService employeeService;
 
     @PostMapping(value = "/addEmployeeC")
@@ -37,11 +38,17 @@ public class EmployeeController {
         return employeeService.deleteEmployee(userCD);
     }
 
-
-    @GetMapping(value = "/findByUserNameCol")
-    public Employee findByUserName(Map<String, Object> model) {
+    @RequestMapping(path = "/input")
+    public String findEmployeeByCd(@ModelAttribute Employee employee, Map<String, Object> model) {
         System.out.println("Start123...");
-        model.put("records", "output123");
-        return employeeService.findEmployeeByName("123");
+
+        Employee em = employeeService.findEmployeeByCd(employee.getusercd());
+
+        ArrayList<String> output = new ArrayList<String>();
+        output.add("usercd: " + em.getusercd());
+        output.add("username: " + em.getusername());
+        model.put("records", output);
+
+        return "input";
     }
 }

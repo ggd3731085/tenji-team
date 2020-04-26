@@ -1,5 +1,6 @@
 package com.tenji.dao;
 
+import com.tenji.AppConfig;
 import com.tenji.entity.Employee;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -15,16 +16,14 @@ import java.sql.Statement;
 
 public class EmployeeDao {
 
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
-
     @Autowired
-    private DataSource dataSource;
+    AppConfig appConfig;
+
     /**
      * 用户数据新增
      */
     public void addEmployee(Employee employee){
-        try (Connection connection = dataSource.getConnection()) {
+        try (Connection connection = appConfig.dataSource().getConnection()) {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("INSERT INTO m_Employee(UserCD,UserName,Sex) VALUES (#{userCD},#{userName},#{sex})");
         } catch (Exception e) {
@@ -36,7 +35,7 @@ public class EmployeeDao {
      * 用户数据修改
      */
     public void updateEmployee(Employee employee){
-        try (Connection connection = dataSource.getConnection()) {
+        try (Connection connection = appConfig.dataSource().getConnection()) {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("update m_Employee set UserName=#{UserName},Sex=#{sex} where UserCD=#{userCD}");
         } catch (Exception e) {
@@ -57,10 +56,11 @@ public class EmployeeDao {
      *
      */
     //@Select("SELECT UserCD,UserName,Sex FROM m_Employee where UserName=#{userName}")
-    public Employee findByName(String userName){
-        try (Connection connection = dataSource.getConnection()) {
+    public Employee findByUserCD(String userCd){
+        try (Connection connection = appConfig.dataSource().getConnection()) {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT UserCD,UserName,Sex FROM m_Employee where UserName=#{userName}");
+            ResultSet rs = stmt.executeQuery(
+                    "SELECT UserCD,UserName,Sex FROM m_Employee where Usercd='" + userCd + "'");
 
             Employee emp = new Employee();
 
@@ -78,14 +78,4 @@ public class EmployeeDao {
         }
     }
 
-    @Bean
-    public DataSource dataSource() throws SQLException {
-        if (dbUrl == null || dbUrl.isEmpty()) {
-            return new HikariDataSource();
-        } else {
-            HikariConfig config = new HikariConfig();
-            config.setJdbcUrl(dbUrl);
-            return new HikariDataSource(config);
-        }
-    }
 }

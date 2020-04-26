@@ -167,7 +167,7 @@ public class Main {
      String input2(Map<String, Object> model) {
          return "input";
     }
-    @RequestMapping(path = "/input")
+    @RequestMapping(path = "/input1")
      String  input(@ModelAttribute Employee employee,Map<String, Object> model) {
         try{
             System.out.println("employeeService_Start...");
@@ -196,7 +196,7 @@ public class Main {
             System.out.println("error...");
             System.out.println(e.getMessage());
         }
-        return "input";
+        return "input1";
     }
 /*
   @Bean

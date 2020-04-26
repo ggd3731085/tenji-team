@@ -1,11 +1,13 @@
 package com.tenji.service;
 import com.tenji.dao.EmployeeDao;
 import com.tenji.entity.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("EmployeeService")
 public class EmployeeService {
 
+    @Autowired
     private EmployeeDao employeeDao;
 
     public boolean addEmployee(Employee employee) {
@@ -41,9 +43,9 @@ public class EmployeeService {
         return flag;
     }
 
-    public Employee findEmployeeByName(String userName) {
+    public Employee findEmployeeByCd(String userCD) {
         try{
-            Employee emp = employeeDao.findByName(userName);
+            Employee emp = employeeDao.findByUserCD(userCD);
             return emp;
         }catch (Exception ex){
             Employee emp = new Employee();
@@ -51,7 +53,5 @@ public class EmployeeService {
             emp.setusername("nonameSer");
             return emp;
         }
-
-
     }
 }
