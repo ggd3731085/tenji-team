@@ -55,7 +55,7 @@ public class EmployeeDao {
      * 根据用户名称查询用户信息
      *
      */
-    //@Select("SELECT UserCD,UserName,Sex FROM m_Employee where UserName=#{userName}")
+    @Bean
     public Employee findByUserCD(String userCd){
         try (Connection connection = appConfig.dataSource().getConnection()) {
             Statement stmt = connection.createStatement();
