@@ -45,16 +45,22 @@ import static javax.measure.unit.SI.KILOGRAM;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @Controller
 @SpringBootApplication
 public class Main {
 
-  @Value("${spring.datasource.url}")
-  private String dbUrl;
+  /*@Value("${spring.datasource.url}")
+  private String dbUrl;*/
 
-  @Autowired
-  private DataSource dataSource;
+  /*@Autowired
+  private DataSource dataSource;*/
+  ApplicationContext appConf = new AnnotationConfigApplicationContext(AppConfig.class);
+
+    @Autowired
+    AppConfig appConfig;
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
@@ -77,7 +83,7 @@ public class Main {
   }
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
+    try (Connection connection = appConfig.dataSource().getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
@@ -128,7 +134,7 @@ public class Main {
             System.out.println("employeeService_Start...");
             //Employee emp =  employeeService.findEmployeeByName("天時くん００１");
             Employee emp = new Employee();
-            try (Connection connection = dataSource.getConnection()) {
+            try (Connection connection = appConfig.dataSource().getConnection()) {
                 Statement stmt = connection.createStatement();
                 ResultSet rs =
                         stmt.executeQuery(
@@ -167,7 +173,7 @@ public class Main {
             System.out.println("employeeService_Start...");
             System.out.println("employeeService_usercd..."+ employee.getusercd());
             //Employee emp =  employeeService.findEmployeeByName("天時くん００１");
-            try (Connection connection = dataSource.getConnection()) {
+            try (Connection connection = appConfig.dataSource().getConnection()) {
                 Statement stmt = connection.createStatement();
                 ResultSet rs =
                         stmt.executeQuery(
@@ -192,7 +198,7 @@ public class Main {
         }
         return "input";
     }
-
+/*
   @Bean
   public DataSource dataSource() throws SQLException {
     if (dbUrl == null || dbUrl.isEmpty()) {
@@ -202,6 +208,6 @@ public class Main {
       config.setJdbcUrl(dbUrl);
       return new HikariDataSource(config);
     }
-  }
+  }*/
 
 }
