@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.springframework.context.annotation.Configuration;
 
 public class EmployeeDao {
 
@@ -55,7 +56,6 @@ public class EmployeeDao {
      * 根据用户名称查询用户信息
      *
      */
-    @Bean
     public Employee findByUserCD(String userCd){
         try (Connection connection = appConfig.dataSource().getConnection()) {
             Statement stmt = connection.createStatement();
