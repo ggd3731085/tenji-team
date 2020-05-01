@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login") //認証処理が実行される
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .successForwardUrl("/index")
+                .successForwardUrl("/")
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()
