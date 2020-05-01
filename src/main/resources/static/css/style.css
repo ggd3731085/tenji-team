@@ -1,0 +1,16 @@
+div.showing{
+	margin:20px auto;
+	border:1px solid grey;
+	padding-left: 900px;
+	padding-top: 560px;
+    background: url(../tenji_img.jpg);  /* 背景画像指定 */
+    background-repeat:  no-repeat;  /* 背景の繰り返し設定 */
+    background-position: center;    /* 背景の位置指定 */
+}
+
+.even{
+	background-color: red;	
+}
+.odd{
+	background-color: green;
+}
