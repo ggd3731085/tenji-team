@@ -6,10 +6,10 @@
 <head>
     <title>ログイン</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css"
-          th:href="@{/static/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../webapp/static/css/style.css" th:href="@{/static/css/style.css}"/>
 </head>
 <body>
+<div class="showing">
     <div th:if="${param.error}">
         ユーザー名またはパスワードに誤りがあります
     </div>
@@ -17,19 +17,10 @@
         ログアウトしました
     </div>
 
-    <!--<div class="showing">
-      <form th:action="@{/index}" method="post">
-        <div><label> ユーザID  <input name="usercd" type="text" /></label></div>
-        <div><label>パスワード<input name="password" type="text" /></label></div>
-        <div><input type="submit" value="ログイン"/></div>
-      </form>
-    </div>-->
-    <div class="showing">
-      <form th:action="@{/login}" method=post>
-        <div><label> ユーザー名：<input type="text" name="username"/></label></div>
+    <form th:action="@{/login}" method=post><div><label> ユーザーID：<input type="text" name="username"/></label></div>
         <div><label> パスワード：<input type="password" name="password"/></label></div>
         <div><input type="submit" value="ログイン"/></div>
-      </form>
+    </form>
     </div>
 </body>
 
