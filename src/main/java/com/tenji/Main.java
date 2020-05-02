@@ -16,34 +16,20 @@
 
 package com.tenji;
 
-import com.tenji.entity.Employee;
-import com.tenji.service.EmployeeService;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import org.jscience.physics.amount.Amount;
 import org.jscience.physics.model.RelativisticModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import com.tenji.dao.*;
 import javax.measure.quantity.Mass;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
-import com.tenji.service.EmployeeService;
 import static javax.measure.unit.SI.KILOGRAM;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
