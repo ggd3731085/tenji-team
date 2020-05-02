@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../webapp/static/css/style.css" th:href="@{/static/css/style.css}"/>
+        
+</head>
+<body>
+<div class="showing">
+
+    <form action="#" th:action="@{/input}" method="post">
+      <p style="width: 300px;">ユーザー　<input name="usercd" type="text" /></p>
+      <p style="width: 300px;">パスワード<input name="usercd" type="text" /></p>
+      <p><input type="submit" value="ログイン"/></p>
+    </form>
+
+</div>
+
+
+</body>
+
+
+    
+</html>
