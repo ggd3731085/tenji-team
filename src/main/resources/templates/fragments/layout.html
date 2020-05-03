@@ -37,7 +37,9 @@
                 <li class="navbar-right">
                     <!--<a href="#" th:href="@{/logout}><span class="glyphicon glyphicon-book"></span>ログアウト</a>
                 -->
-                    <span class="glyphicon glyphicon-book"></span>ログアウト
+                    <form th:action="@{/logout}" name="logout" method="POST">
+                        <button type="submit" class="glyphicon glyphicon-book"> ログアウト</button>
+                    </form>
                 </li>
             </ul>
         </div>
