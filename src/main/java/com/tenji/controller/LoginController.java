@@ -23,7 +23,8 @@ public class LoginController {
                         .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
                 if (ex != null) {
                     model.addAttribute("showErrorMsg", true);
-                    model.addAttribute("errorMsg", ex.getMessage());
+                    //IDまはたパスワードが誤っています。
+                    model.addAttribute("errorMsg", "IDまはたパスワードが誤っています。");
                 }
             }
         } else if (logout != null) {
@@ -34,6 +35,6 @@ public class LoginController {
 
     @GetMapping("success")
     public String success() {
-        return "success.html";
+        return "index.html";
     }
 }
