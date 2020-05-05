@@ -2,14 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 
 <body>
-<form action="#" th:action="@{/employeeList}" method="post">
-  <p>従業員コード：<input name="usercd" type="text"/></p> <!--placeholder="従業員コード"-->
-  <p>従業員名　　：<input name="username" type="text" /></p><!--placeholder="従業員名"-->
-  <p><input type="submit" value="submit"/></p>
-</form>
-  <div class="container">
-    <h1>従業員一覧</h1>
-  </div>
+<div class="container">
+　　<form action="#" th:action="@{/employeeList}" method="post">
+　　  <p>従業員コード：<input name="usercd" type="text"/></p> <!--placeholder="従業員コード"-->
+　　  <p>従業員名　　：<input name="username" type="text" /></p><!--placeholder="従業員名"-->
+　　  <p><input type="submit" value="照合"/></p>
+　　</form>
+
+  <h1>従業員一覧</h1>
+</div>
 <div class="container">
   <hr>
   <div class="row">
