@@ -4,6 +4,7 @@ import com.tenji.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -54,12 +55,12 @@ public class EmployeeController {
     }
 
     @RequestMapping(path = "/employeeList")
-    public String findEmployees(@ModelAttribute Employee employee, Map<String, Object> model) {
+    public String findEmployees(@ModelAttribute Employee employee, Model model) {
         System.out.println("Start123list...");
 
         List<Employee> emLst = employeeService.findEmployeeList(employee);
 
-        model.put("records", emLst);
+        model.addAttribute("records", emLst);
 
         return "employeeList";
     }
