@@ -21,13 +21,16 @@
         <!--遍历数组-->
         <table>
           <tr style="width: 100%" >
-            <th>#</th>
             <th>社員コード</th>
             <th>社員名</th>
           </tr>
-          <tr style="width: 100%" th:each="item,iterStat : ${records}" th:object="${Employee}"
+          <!--<tr style="width: 100%" th:each="item,iterStat : ${records}" th:object="${Employee}"
               th:style="${iterStat.odd}?'background-color:red':''">
             <td th:text="${iterStat.index}"></td>
+            <td th:text="${item.usercd}"></td>
+            <td th:text="${item.username}"></td>
+          </tr>-->
+          <tr style="width: 100%" th:each="item: ${records}">
             <td th:text="${item.usercd}"></td>
             <td th:text="${item.username}"></td>
           </tr>
