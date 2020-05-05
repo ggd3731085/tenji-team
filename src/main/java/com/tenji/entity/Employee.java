@@ -36,4 +36,14 @@ public class Employee {
     public void setsex(String strsex) {
         this.sex = strsex;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "usercd=" + usercd +
+                ", username='" + username + '\'' +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
+
 }
