@@ -56,12 +56,12 @@ public class EmployeeController {
     }
 
     @RequestMapping(path = "/employeeList")
-    public String findEmployees(@ModelAttribute Employee employee, Model model) {
+    public String findEmployees(@ModelAttribute Employee employee, ModelAndView model) {
         System.out.println("Start123list...");
 
         List<Employee> emLst = employeeService.findEmployeeList(employee);
 
-        model.addAttribute("records", emLst);
+        model.addObject("records", emLst);
 
         return "employeeList";
     }
