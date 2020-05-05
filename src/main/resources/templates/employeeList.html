@@ -22,7 +22,6 @@
         <table>
           <thead>
             <tr style="width: 100%" >
-              <th>社員コード</th>
               <th>社員名</th>
             </tr>
           </thead>
@@ -34,7 +33,6 @@
           </tr>-->
           <tbody>
           <tr style="width: 100%" th:each="employee: ${records}">
-            <td th:text="${employee.usercd}"></td>
             <td th:text="${employee.username}"></td>
           </tr>
           </tbody>
