@@ -17,21 +17,23 @@
   <div class="row">
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-info-sign"></span>検索結果</h3>
-      <!--遍历数组-->
-      <table>
-        <tr style="width: 100%" >
-          <th>#</th>
-          <th>社員コード</th>
-          <th>社員名</th>
-        </tr>
-        <tr style="width: 100%" th:each="item,iterStat : ${records}"
-            th:style="${iterStat.odd}?'background-color:red':''"
-        >
-          <td th:text="${iterStat.index}"></td>
-          <td th:text="${item.usercd}"></td>
-          <td th:text="${item.username}"></td>
-        </tr>
-      </table>
+      <div th:if="${records} != null">
+        <!--遍历数组-->
+        <table>
+          <tr style="width: 100%" >
+            <th>#</th>
+            <th>社員コード</th>
+            <th>社員名</th>
+          </tr>
+          <tr style="width: 100%" th:each="item,iterStat : ${records}"
+              th:style="${iterStat.odd}?'background-color:red':''"
+          >
+            <td th:text="${iterStat.index}"></td>
+            <td th:text="${item.usercd}"></td>
+            <td th:text="${item.username}"></td>
+          </tr>
+        </table>
+      <div/>
     </div>
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>

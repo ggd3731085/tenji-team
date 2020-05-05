@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -55,12 +56,12 @@ public class EmployeeController {
     }
 
     @RequestMapping(path = "/employeeList")
-    public String findEmployees(@ModelAttribute Employee employee, Model model) {
+    public String findEmployees(@ModelAttribute Employee employee, ModelAndView mav) {
         System.out.println("Start123list...");
 
         List<Employee> emLst = employeeService.findEmployeeList(employee);
 
-        model.addAttribute("records", emLst);
+        mav.addObject("records", emLst);
 
         return "employeeList";
     }
