@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
@@ -50,5 +51,16 @@ public class EmployeeController {
         model.put("records", output);
 
         return "input";
+    }
+
+    @RequestMapping(path = "/employeeList")
+    public String findEmployees(@ModelAttribute Employee employee, Map<String, Object> model) {
+        System.out.println("Start123list...");
+
+        List<Employee> emLst = employeeService.findEmployeeList(employee);
+
+        model.put("records", emLst);
+
+        return "employeeList";
     }
 }

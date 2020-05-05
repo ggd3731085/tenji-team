@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<body>
+<form action="#" th:action="@{/employeeList}" method="post">
+  <p><input name="usercd" type="text" /></p>
+  <p><input name="username" type="text" /></p>
+  <p><input type="submit" value="submit"/></p>
+</form>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1>従業員一覧</h1>
+  </div>
+</div>
+<div class="container">
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-info-sign"></span>検索結果</h3>
+      <!--遍历数组-->
+      <table>
+        <tr style="width: 100%" >
+          <th>#</th>
+          <th>社員コード</th>
+          <th>社員名</th>
+        </tr>
+        <tr style="width: 100%" th:each="item,iterStat : ${records}"
+            th:style="${iterStat.odd}?'background-color:red':''"
+        >
+          <td th:text="${iterStat.index}"></td>
+          <td th:text="${item.usercd}"></td>
+          <td th:text="${item.username}"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
+      <ul>
+        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-java">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
+        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
+      </ul>
+      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
+      <ul>
+        <li><a href="">天時情報システム</a></li>
+        <li><a href="">Deploying Java Apps on Heroku</a></li>
+      </ul>
+    </div>
+  </div> <!-- row -->
+</div>
+
+</body>
+</html>
