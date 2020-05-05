@@ -3,14 +3,12 @@
 
 <body>
 <form action="#" th:action="@{/employeeList}" method="post">
-  <p><input name="usercd" type="text"/></p> <!--placeholder="従業員コード"-->
-  <p><input name="username" type="text" /></p><!--placeholder="従業員名"-->
+  <p>従業員コード：<input name="usercd" type="text"/></p> <!--placeholder="従業員コード"-->
+  <p>従業員名　　：<input name="username" type="text" /></p><!--placeholder="従業員名"-->
   <p><input type="submit" value="submit"/></p>
 </form>
 <div class="jumbotron text-center">
-  <div class="container">
     <h1>従業員一覧</h1>
-  </div>
 </div>
 <div class="container">
   <hr>
@@ -36,18 +34,13 @@
             </tr>
           </tbody>
         </table>
-      <div/>
+      </div>
     </div>
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
       <ul>
         <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-java">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
         <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="">天時情報システム</a></li>
-        <li><a href="">Deploying Java Apps on Heroku</a></li>
       </ul>
     </div>
   </div> <!-- row -->
