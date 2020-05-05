@@ -1,10 +1,10 @@
 package com.tenji.entity;
-
+import java.io.Serializable;
 /**
  * Created by tenji
  * Time: 2020/04/13 17:56
  */
-public class Employee {
+public class Employee implements Serializable{
 
     private String usercd;
     private String username;
