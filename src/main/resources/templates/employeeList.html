@@ -33,9 +33,9 @@
             <td th:text="${item.username}"></td>
           </tr>-->
           <tbody>
-          <tr style="width: 100%" th:each="item: ${records}">
-            <td th:text="#{item.usercd}"></td>
-            <td th:text="#{item.username}"></td>
+          <tr style="width: 100%" th:each="employee: ${records}">
+            <td th:text="${employee.usercd}"></td>
+            <td th:text="${employee.username}"></td>
           </tr>
           </tbody>
         </table>
