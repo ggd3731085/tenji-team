@@ -80,7 +80,7 @@ public class EmployeeService {
 
             String strSql;
             if(getWhere(empPara) != "") {
-                strSql = "SELECT UserCD,UserName,Sex FROM m_Employee " + getWhere(empPara);
+                strSql = "SELECT UserCD,UserName,Sex FROM m_Employee where " + getWhere(empPara);
                 System.out.println("strSql.:" + strSql);
             }else{
                 strSql = "SELECT UserCD,UserName,Sex FROM m_Employee ";
