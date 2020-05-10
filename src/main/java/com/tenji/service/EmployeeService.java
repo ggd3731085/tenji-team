@@ -27,11 +27,13 @@ public class EmployeeService {
 
             strSql = "INSERT INTO m_Employee(UserCD,UserName) Values('" + employee.getusercd() +"','" +
                     employee.getusername() + "'";
+            System.out.println("Aadd strSql:" + strSql);
             stmt.executeUpdate(strSql);
 
             flag=true;
 
         } catch (Exception e) {
+            System.out.println("Aadd Error:" + e.getMessage());
             flag=false;
         }
         return flag;
