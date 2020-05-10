@@ -26,7 +26,7 @@ public class EmployeeService {
             String strSql;
 
             strSql = "INSERT INTO m_Employee(UserCD,UserName) Values('" + employee.getusercd() +"','" +
-                    employee.getusername() + "'";
+                    employee.getusername() + "')";
             System.out.println("Aadd strSql:" + strSql);
             stmt.executeUpdate(strSql);
 
