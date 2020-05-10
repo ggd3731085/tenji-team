@@ -21,13 +21,14 @@ public class EmployeeController {
                                 @RequestParam("username") String username,
                                 @RequestParam("sex") String sex) {*/
     @PostMapping(value = "/addEmployee")
-    public boolean addEmployee(@ModelAttribute Employee employee) {
+    public String addEmployee(@ModelAttribute Employee employee) {
         System.out.println("开始新增...");
         /*Employee employee = new Employee();
         employee.setusername(username);
         employee.setusercd(usercd);
         employee.setsex(sex);*/
-        return employeeService.addEmployee(employee);
+        employeeService.addEmployee(employee);
+        return "newEmployee";
     }
 
     @GetMapping(value = "/updateEmployee")
