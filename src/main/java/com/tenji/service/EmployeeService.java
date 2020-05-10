@@ -112,11 +112,11 @@ public class EmployeeService {
 
         //Usercd
         if(empPara.getusercd() != ""){
-            param.add("Usercd LIKE %" + empPara.getusercd() + "%");
+            param.add("Usercd LIKE '%" + empPara.getusercd() + "%'");
         }
         //UserName
         if(empPara.getusername() != ""){
-            param.add("UserName LIKE %" + empPara.getusername() + "%");
+            param.add("UserName LIKE '%" + empPara.getusername() + "%'");
         }
 
         if(param.size()>0){
