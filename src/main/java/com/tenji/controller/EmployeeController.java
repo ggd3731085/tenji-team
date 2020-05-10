@@ -20,7 +20,7 @@ public class EmployeeController {
     /*public boolean addEmployee( @RequestParam("usercd") String usercd,
                                 @RequestParam("username") String username,
                                 @RequestParam("sex") String sex) {*/
-    @PostMapping(value = "/addEmployee")
+    @RequestMapping(value = "/addEmployee")
     public String addEmployee(@ModelAttribute Employee employee) {
         System.out.println("开始新增...");
         /*Employee employee = new Employee();
