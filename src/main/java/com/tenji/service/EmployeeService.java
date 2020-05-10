@@ -92,6 +92,7 @@ public class EmployeeService {
                  Employee emp = new Employee();
                  emp.setusercd(rs.getString("usercd"));
                  emp.setusername(rs.getString("username"));
+                 emp.setsex(rs.getString("Sex"));
                  emplist.add(emp);
              }
 
