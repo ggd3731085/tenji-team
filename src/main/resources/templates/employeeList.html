@@ -18,12 +18,13 @@
       <h3><span class="glyphicon glyphicon-info-sign"></span>検索結果</h3>
       <div th:if="${records} != null">
         <!--遍历数组-->
-        <table>
+        <table border="1">
           <thead>
             <tr style="width: 100%" >
               <th>#</th>
               <th>社員コード</th>
               <th>社員名</th>
+              <th>性別</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,7 @@
               <td th:text="${iterStat.index}"></td>
               <td th:text="${item.getusercd()}"></td>
               <td th:text="${item.getusername()}"></td>
+              <td th:text="${item.getusex()}"></td>
             </tr>
           </tbody>
         </table>

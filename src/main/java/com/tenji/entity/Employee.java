@@ -1,6 +1,7 @@
 package com.tenji.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by tenji
@@ -12,6 +13,7 @@ public class Employee implements Serializable{
     private String usercd;
     private String username;
     private String sex;
+    private Date birthday;
     public Employee(){
     }
 
@@ -39,6 +41,14 @@ public class Employee implements Serializable{
         this.sex = strsex;
     }
 
+    public Date getbirthday() {
+        return birthday;
+    }
+
+    public void setbirthday(Date datebirthday) {
+        this.birthday = datebirthday;
+    }
+    /*
     @Override
     public String toString() {
         return "Employee{" +
@@ -46,5 +56,5 @@ public class Employee implements Serializable{
                 ", username='" + username + '\'' +
                 ", sex='" + sex + '\'' +
                 '}';
-    }
+    }*/
 }

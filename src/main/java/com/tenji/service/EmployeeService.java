@@ -60,6 +60,7 @@ public class EmployeeService {
             while (rs.next()) {
                 emp.setusercd(rs.getString("usercd"));
                 emp.setusername(rs.getString("username"));
+                emp.setsex(rs.getString("Sex"));
             }
             return emp;
 
