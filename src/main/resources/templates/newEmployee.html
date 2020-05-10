@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<body>
+<h1>新規従業員</h1>
+<div class="container">
+    　　<form action="#" th:action="@{/addEmployee}" method="post">
+    　　  <p>従業員コード：<input name="usercd" type="text"/></p> <!--placeholder="従業員コード"-->
+    　　  <p>従業員名　　：<input name="username" type="text" /></p>
+         <p>sex　：     <input name="sex" type="text" /></p><!<!--placeholder="従業員名"-->
+    　　  <p><input type="submit" value="新規"/></p>
+    　　</form>
+</div>
+</body>
+</html>

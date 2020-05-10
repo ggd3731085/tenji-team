@@ -17,25 +17,26 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping(value = "/addEmployeeC")
-    public boolean addEmployee( @RequestParam("usercd") String usercd,
+    /*public boolean addEmployee( @RequestParam("usercd") String usercd,
                                 @RequestParam("username") String username,
-                                @RequestParam("sex") String sex) {
+                                @RequestParam("sex") String sex) {*/
+    @PostMapping(value = "/addEmployee")
+    public boolean addEmployee(@ModelAttribute Employee employee) {
         System.out.println("开始新增...");
-        Employee employee = new Employee();
+        /*Employee employee = new Employee();
         employee.setusername(username);
         employee.setusercd(usercd);
-        employee.setsex(sex);
+        employee.setsex(sex);*/
         return employeeService.addEmployee(employee);
     }
 
-    @GetMapping(value = "/updateEmployeeC")
+    @GetMapping(value = "/updateEmployee")
     public boolean updateEmployee( Employee employee) {
         System.out.println("开始更新...");
         return employeeService.updateEmployee(employee);
     }
 
-    @GetMapping(value = "/deleteEmployeeC")
+    @GetMapping(value = "/deleteEmployee")
     public boolean deleteEmployee(@RequestParam(value = "userName", required = true) String userCD) {
         System.out.println("开始删除...");
         return employeeService.deleteEmployee(userCD);

@@ -17,12 +17,22 @@ public class EmployeeService {
     AppConfig appConfig;
 
     public boolean addEmployee(Employee employee) {
+
         boolean flag=false;
-        try{
-            //employeeDao.addEmployee(employee);
+        try (Connection connection = appConfig.dataSource().getConnection()) {
+
+            Statement stmt = connection.createStatement();
+
+            String strSql;
+
+            strSql = "INSERT INTO m_Employee(UserCD,UserName) Values('" + employee.getusercd() +"','" +
+                    employee.getusername() + "'";
+            stmt.executeUpdate(strSql);
+
             flag=true;
-        }catch(Exception e){
-            e.printStackTrace();
+
+        } catch (Exception e) {
+            flag=false;
         }
         return flag;
     }
